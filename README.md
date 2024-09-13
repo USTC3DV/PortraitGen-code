@@ -131,7 +131,7 @@ You could also use `relight.py` to generate background images according to the p
 
 ## Citation
 
-If you find our paper useful for your work please cite:
+If you find our paper useful for your work please cite: 
 
 ```
 
