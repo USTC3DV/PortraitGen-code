@@ -1,8 +1,8 @@
 # Portrait Video Editing Empowered by Multimodal Generative Priors
 
-Official implementation of the paper "Portrait Video Editing Empowered by Multimodal Generative Priors". This repository contains code, data and released pretrained model.
+Official implementation of the SIGGRAPH Asia 2024 paper "Portrait Video Editing Empowered by Multimodal Generative Priors". This repository contains code, data and released pretrained model.
 
-**|Project Page|Paper|Dataset|Pretrained Models|**
+**|[Project Page](https://ustc3dv.github.io/PortraitGen/)|Paper|[Dataset](https://drive.google.com/file/d/1BmxY-xjDwTi9glg0ukTxmHv4Xn7p_Se8/view?usp=sharing)|[Pretrained Models](https://drive.google.com/file/d/18-_vtPOFmX8dmuDbMX17kowPODXGGo6P/view?usp=sharing)|**
 <!-- **|[Project Page](XXX)|[Paper](XXX)|** -->
 
 ![teaser](fig/teaser.png)
@@ -60,7 +60,7 @@ wflw_to_pts51.txt
 ```
 
 ## Reconstruction
-Download our [preprocessed dataset](XXX) and unzip it to `./testdataset` or organize your own data in the same folder structure.
+Download our [preprocessed dataset](https://drive.google.com/file/d/1BmxY-xjDwTi9glg0ukTxmHv4Xn7p_Se8/view?usp=sharing) and unzip it to `./testdataset` or organize your own data in the same folder structure.
 
 
 Then you could run `run_recon.sh` to reconstruct a 3D Gaussian portrait.
@@ -68,7 +68,7 @@ Then you could run `run_recon.sh` to reconstruct a 3D Gaussian portrait.
 ```
 bash run_recon.sh GPUID "IDNAME" 
 ```
-You could also use our [pretrained portrait models](XXX) to run editing directly.
+You could also use our [pretrained portrait models](https://drive.google.com/file/d/18-_vtPOFmX8dmuDbMX17kowPODXGGo6P/view?usp=sharing) to run editing directly.
 ## Text Driven Editing
 
 We use [InstructPix2Pix](https://www.timothybrooks.com/instruct-pix2pix/) as 2D editor. This task needs to install [diffusers](https://github.com/huggingface/diffusers)
@@ -131,7 +131,7 @@ You could also use `relight.py` to generate background images according to the p
 
 ## Citation
 
-If you find our paper useful for your work please cite:
+If you find our paper useful for your work please cite: 
 
 ```
 
