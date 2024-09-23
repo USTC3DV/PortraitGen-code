@@ -2,7 +2,7 @@
 
 Official implementation of the SIGGRAPH Asia 2024 paper "Portrait Video Editing Empowered by Multimodal Generative Priors". This repository contains code, data and released pretrained model.
 
-**|[Project Page](https://ustc3dv.github.io/PortraitGen/)|Paper|[Dataset](https://drive.google.com/file/d/1BmxY-xjDwTi9glg0ukTxmHv4Xn7p_Se8/view?usp=sharing)|[Pretrained Models](https://drive.google.com/file/d/18-_vtPOFmX8dmuDbMX17kowPODXGGo6P/view?usp=sharing)|**
+**|[Project Page](https://ustc3dv.github.io/PortraitGen/)|[Paper](https://arxiv.org/pdf/2409.13591)|[Dataset](https://drive.google.com/file/d/1BmxY-xjDwTi9glg0ukTxmHv4Xn7p_Se8/view?usp=sharing)|[Pretrained Models](https://drive.google.com/file/d/18-_vtPOFmX8dmuDbMX17kowPODXGGo6P/view?usp=sharing)|**
 <!-- **|[Project Page](XXX)|[Paper](XXX)|** -->
 
 ![teaser](fig/teaser.png)
@@ -134,6 +134,12 @@ You could also use `relight.py` to generate background images according to the p
 If you find our paper useful for your work please cite: 
 
 ```
+@inproceedings{Gao2024PortraitGen,
+title = {Portrait Video Editing Empowered by Multimodal Generative Priors},
+author = {Xuan Gao and Haiyao Xiao and Chenglai Zhong and Shimin Hu and Yudong Guo and Juyong Zhang},
+booktitle = {ACM SIGGRAPH Asia Conference Proceedings},
+year = {2024},
+}
 
 ```
 
