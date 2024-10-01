@@ -143,5 +143,3 @@ year = {2024},
 
 ```
 
-## Acknowledgement
-
