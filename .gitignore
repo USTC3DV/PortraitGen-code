@@ -8,8 +8,6 @@
 ./dataset
 ./*.jpg
 ./code/dmm_models/smplx/SMPLX2020/MANO_SMPLX_vertex_ids.pkl
-./code/dmm_models/smplx/SMPLX2020/pts51_bary_coords.txt
-./code/dmm_models/smplx/SMPLX2020/pts51_faces_idx.txt
 ./code/dmm_models/smplx/SMPLX2020/SMPLX_FEMALE.npz
 ./code/dmm_models/smplx/SMPLX2020/SMPL-X__FLAME_vertex_ids.npy
 ./code/dmm_models/smplx/SMPLX2020/SMPLX_MALE.npz
