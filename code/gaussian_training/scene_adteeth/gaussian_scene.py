@@ -72,17 +72,14 @@ class GaussianScene(nn.Module):
     def cal_dis_loss(self):
         return torch.mean(self._xyz_canonical_dis**2)
     
-    def cal_scale_loss(self):
+    def cal_scale_loss(self,arg_max = 6e-2):
         # This function will return nan if no scaling is larger than arg_max
-        arg_max = 6e-2
+        
         return torch.mean(torch.relu(self.scaling_activation(self._scaling)[self.scaling_activation(self._scaling)>arg_max] - arg_max))
 
     def opac_sparse_loss(self,sigma = 1e-8):
         opacity = self.get_opacity
-        # breakpoint()
         loss = (torch.log(opacity+sigma) + torch.log(1-opacity+sigma)).mean()
-        # loss = (torch.log(1-opacity+sigma)).mean()
-        # loss = (torch.log(opacity+sigma)).mean()
         return loss
 
     def init_attributes(self):

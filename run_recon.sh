@@ -4,7 +4,7 @@ cuda_device=$1
 folders=$2
 exp_name=$3
 IFS=' ' read -r -a array <<< "$folders"
-data_path="./testdataset"
+data_path="./preprocessed"
 
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64/stubs/:/usr/local/cuda/lib64:/usr/local/cuda/cudnn/lib:$LD_LIBRARY_PATH
 for name in "${array[@]}"

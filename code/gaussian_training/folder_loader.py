@@ -28,7 +28,6 @@ class Folder_Dataset(Dataset):
         self.train_img_paths = natsorted([os.path.join(train_img_dir, f) for f in os.listdir(train_img_dir) if f.endswith('.png')])
         self.landmark_paths = natsorted([os.path.join(landmark_dir, f) for f in os.listdir(landmark_dir) if f.endswith('.lms')])
 
-        # ipdb.set_trace()
         tmp_img = cv2.imread(self.ori_img_paths[0])
         self.img_size = tmp_img.shape[:2]
 
@@ -47,14 +46,22 @@ class Folder_Dataset(Dataset):
 
     def preload_to_cpu(self):
         self.image_list = []
+        self.mask_list = []
 
         for i in range(len(self.load_ids)):
             load_idx = self.load_ids[i]
             img_gt = cv2.imread(self.train_img_paths[load_idx], cv2.IMREAD_UNCHANGED)
             img_gt = cv2.cvtColor(img_gt, cv2.COLOR_BGRA2RGBA)[:, :, :3]
+            seg_mask = cv2.imread(self.seg_mask_paths[load_idx], cv2.IMREAD_UNCHANGED)
+            seg_mask = cv2.cvtColor(seg_mask, cv2.COLOR_BGR2RGB)
+
+
 
             self.image_list.append(img_gt)
+            self.mask_list.append(seg_mask)
         self.image_list = torch.tensor(np.array(self.image_list))
+        self.mask_list = torch.tensor(np.array(self.mask_list)).to(dtype=torch.float32)/255.0
+        self.updated_num = [0]*len(self.load_ids)
 
     def __len__(self):
         return self.load_ids.shape[0]
@@ -86,12 +93,12 @@ class Folder_Dataset(Dataset):
         face_mask = torch.from_numpy(face_mask).to(dtype=torch.float32)*255
 
         head_eye_g_ids = np.array(( 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15), dtype=np.uint8)
-        head_eye_g_mask = np.isin(parsing_mask, head_eye_g_ids).astype(np.float32)
+        head_eye_g_mask0 = np.isin(parsing_mask, head_eye_g_ids).astype(np.float32)
         neck_ids = np.array(( 1), dtype=np.uint8)
         neck_mask = np.isin(parsing_mask, neck_ids).astype(np.float32)
         kernel = np.ones((5,5),np.uint8)
-        head_eye_g_mask = cv2.dilate(head_eye_g_mask,kernel,iterations=5)
-        head_eye_g_mask = np.maximum(head_eye_g_mask,neck_mask)
+        head_eye_g_mask0 = cv2.dilate(head_eye_g_mask0,kernel,iterations=5)
+        head_eye_g_mask = np.maximum(head_eye_g_mask0,neck_mask)
         head_eye_g_mask = torch.from_numpy(head_eye_g_mask).to(dtype=torch.float32)*255
         
         nonzero_head=torch.nonzero(head_mask[:,:,0])
@@ -132,6 +139,7 @@ class Folder_Dataset(Dataset):
             'face_mask': face_mask, 
             "seg_mask": seg_mask,
             "head_eye_g_mask":head_eye_g_mask,
+            "head_mask_dilated":head_eye_g_mask0*255,
         }
 
         return data_dict

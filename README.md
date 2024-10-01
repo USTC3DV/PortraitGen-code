@@ -68,14 +68,14 @@ Then you could run `run_recon.sh` to reconstruct a 3D Gaussian portrait.
 ```
 bash run_recon.sh GPUID "IDNAME" 
 ```
-You could also use our [pretrained portrait models](https://drive.google.com/file/d/18-_vtPOFmX8dmuDbMX17kowPODXGGo6P/view?usp=sharing) to run editing directly.
+You could also use our [pretrained portrait models](https://drive.google.com/file/d/18-_vtPOFmX8dmuDbMX17kowPODXGGo6P/view?usp=sharing) to run editing directly. After downloading dataset and models, run:
+```
+python move_ckpt.py
+rm -rf ./pretrained
+```
 ## Text Driven Editing
 
-We use [InstructPix2Pix](https://www.timothybrooks.com/instruct-pix2pix/) as 2D editor. This task needs to install [diffusers](https://github.com/huggingface/diffusers)
-
-```
-pip install diffusers
-```
+We use [InstructPix2Pix](https://www.timothybrooks.com/instruct-pix2pix/) as 2D editor. 
 
 Then you could run `run_edit_ip2p.sh` to edit with instruction style prompt.
 ```
