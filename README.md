@@ -52,11 +52,9 @@ pts51_faces_idx.txt
 SMPLX_FEMALE.npz
 SMPL-X__FLAME_vertex_ids.npy
 SMPLX_MALE.npz
-SMPLX_NEUTRAL_bc.npz
 SMPLX_NEUTRAL.npz
 SMPLX_NEUTRAL.pkl
 SMPLX_to_J14.pkl
-wflw_to_pts51.txt
 ```
 
 ## Reconstruction
