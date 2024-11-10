@@ -17,7 +17,7 @@ verts = verts.cuda().float()
 mesh_renderer = MeshRenderer()
 
 uv_size = 185
-rast_out = mesh_renderer.rasterize_uv_img(uv_coords, tris_uv, uv_size)
+rast_out = mesh_renderer.rasterize_uv_img(uv_coords, tris_uv, uv_size) # rast_out's shape [minibatch_size, height, width, 4] and contains the main rasterizer output in order (u, v, z/w, triangle_id)
 print(rast_out.shape, float(torch.sum((rast_out[..., 3]>0).float())) / uv_size / uv_size)
 # uv_mask_img = ((rast_out[0, :, :, 3] > 0).float()*255).byte().detach().cpu().numpy()
 faces_num = tris_uv.shape[0]
@@ -27,9 +27,9 @@ teeth_faces_num = 36 # 确实撒了几千个高斯点，但是只有36个三角�
 
 ##### save info, upper_teeth: 1164, downer_teeth: 1049
 rast_out[..., 3] -= 1
-smplx_part = rast_out[0, :, :, :][(rast_out[0, :, :, 3] > -.5)].reshape(-1, 4)
+smplx_part = rast_out[0, :, :, :][(rast_out[0, :, :, 3] > -.5)].reshape(-1, 4) # (rast_out[0, :, :, 3] > -.5) is the valid map [512,512], this is to select all the valid uv pixels.
 
-valid_tris_verts = tris_verts[smplx_part[:, 3].long()]
+valid_tris_verts = tris_verts[smplx_part[:, 3].long()] # smplx_part: pixel->triangle_idx, then triangle_idx->verts_idx
 valid_verts = verts[valid_tris_verts[:,0]] * smplx_part[:, 0:1] + verts[valid_tris_verts[:,1]] * smplx_part[:, 1:2] + verts[valid_tris_verts[:,2]] * (1. - torch.sum(smplx_part[:, 0:2], dim=-1, keepdim=True))
 
 valid_img_indices = torch.nonzero(rast_out[0, :, :, 3] > -.5, as_tuple=True)
