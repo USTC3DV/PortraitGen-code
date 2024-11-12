@@ -56,6 +56,7 @@ SMPLX_NEUTRAL.npz
 SMPLX_NEUTRAL.pkl
 SMPLX_to_J14.pkl
 ```
+You may download `SMPLX_to_J14.pkl` [here](https://huggingface.co/camenduru/SMPLer-X/blob/main/SMPLX_to_J14.pkl).
 
 ## Reconstruction
 Download our [preprocessed dataset](https://drive.google.com/file/d/1BmxY-xjDwTi9glg0ukTxmHv4Xn7p_Se8/view?usp=sharing) and unzip it to `./testdataset` or organize your own data in the same folder structure.
