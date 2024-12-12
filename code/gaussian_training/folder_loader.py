@@ -78,7 +78,29 @@ class Folder_Dataset(Dataset):
         seg_mask = torch.from_numpy(cv2.cvtColor(seg_mask, cv2.COLOR_BGR2RGB))
         parsing_mask = cv2.cvtColor(parsing_mask, cv2.COLOR_BGR2RGB)
 
+        # go to https://github.com/FacePerceiver/facer/issues/20 for the semantic meaning of these labels
         # 'label_names':[ 'background','neck','face','cloth','rr','Ir','rb','lb','re', 'le','nose','imouth','llip','ulip','hair', 'eyeg','hat','earr','neck_1']
+
+        """
+        neck
+        skin
+        cloth
+        right ear
+        left ear
+        right eyebrow
+        left eyebrow
+        right eye
+        left eye
+        nose
+        mouth
+        lower lip
+        upper lip
+        hair
+        eyeglass
+        hat
+        earring
+        necklace
+        """
 
         head_ids = np.array(( 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14), dtype=np.uint8)
         head_mask = np.isin(parsing_mask, head_ids).astype(np.float32)
