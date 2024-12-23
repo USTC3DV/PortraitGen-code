@@ -82,24 +82,24 @@ class Folder_Dataset(Dataset):
         # 'label_names':[ 'background','neck','face','cloth','rr','Ir','rb','lb','re', 'le','nose','imouth','llip','ulip','hair', 'eyeg','hat','earr','neck_1']
 
         """
-        neck
-        skin
-        cloth
-        right ear
-        left ear
-        right eyebrow
-        left eyebrow
-        right eye
-        left eye
-        nose
-        mouth
-        lower lip
-        upper lip
-        hair
-        eyeglass
-        hat
-        earring
-        necklace
+        1. neck
+        2. skin
+        3. cloth
+        4. right ear
+        5. left ear
+        6. right eyebrow
+        7. left eyebrow
+        8. right eye
+        9. left eye
+        10. nose
+        11. mouth
+        12. lower lip
+        13. upper lip
+        14. hair
+        15. eyeglass
+        16. hat
+        17. earring
+        18. necklace
         """
 
         head_ids = np.array(( 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14), dtype=np.uint8)
